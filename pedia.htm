@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neurology</title>
+    <link rel="stylesheet" href="pedia.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Med-Appoint</div>
+        <ul class="nav-link" id="navLink">
+            <li><a href="DUMMY.HTM">Home</a></li>
+            <li><a href="aboutus.htm">About Us</a></li>
+            <li>
+                <a href="FindDoctors.htm">Find Doctors</a>
+                <ul class="dropdown-menu">
+                    <li><a href="cardo.htm">Dept . of Cardioogy</a></li>
+                  <li><a href="neuro.htm">Dept. of Neurology</a></li>
+                  <li><a href="Gynecologist.htm">Dept . of Gynecology</a></li>
+                  <li><a href="orthopedics.htm">Dept . of Orthopedics</a></li>
+                  <li><a href="pedia.htm">Dept . of Pediatrics</a></li>
+                  <li><a href="oncology.htm">Dept . of Oncology</a></li>
+                  <li><a href="ENT.htm">Dept . of ENT</a></li>
+                  <li><a href="urology.htm">Dept . of Urology</a></li>
+                  <li><a href="opthalmology.htm">Dept . Opthalmology</a></li>
+                </ul>
+              </li>
+              <li><a href="blog.htm">Blog</a></li>
+            <li><a href="contactus.htm">Contact Us</a></li>
+            </ul>
+                <div class="log-buttons">
+            <a href="#login.htm" class="btn">Login</a>
+            <a href="#signup" class="btn">Signup</a>
+        </div>
+        <div class="ham" id="ham">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <div class="cards-container">
+        <div class="cards">
+            <div class="image">
+                <img src="images/rrr.png">
+            </div>
+            <div class="title">
+                <h3>Dr. Yesha Amatya </h3>
+            </div>
+            <div class="des">
+                <p>Dr. Yesha Amatya is a qualified pediatrician with an MBBS and MD in Pediatrics. She provides consultations both online and in person at Clinic One in Lalitpur. She is known for her patient-focused approach to children's health care.​</p>
+                    <button onclick="openModal('modalBhagwan')">View Profile</button>
+                    
+            </div>
+            <div class="butt">
+                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+
+            </div>
+            
+        </div>
+        <div class="cards">
+            <div class="image">
+                <img src="images/kkk.png">
+            </div>
+            <div class="title">
+                <h3>Dr. Kabita Keyal</h3>
+            </div> 
+            <div class="des">
+                <p>Dr. Kabita Keyal holds an MBBS and MD in Pediatrics. She offers pediatric care services through both online and clinic visits, specializing in comprehensive child healthcare and treatment plans.​ </p>
+                    <button onclick="openModal('modalBhagwan')">View Profile</button>
+                    
+            </div>
+            <div class="butt">
+                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+
+            </div>
+        </div>
+        <div class="cards">
+            <div class="image">
+                <img src="https://www.hamrodoctor.com/uploads/doctors/582005f6ac4f1.jpg">
+            </div>
+            <div class="title">
+                <h3>Dr. Tekendra Karki</h3>
+            </div>
+            <div class="des">
+                <p>Based in Lalitpur and Kathmandu, Dr. Tekendra Karki is recognized for his extensive experience in pediatric medicine. He is noted for his dedication to improving child health outcomes through preventive and curative measures.    ​</p>
+                    <button onclick="openModal('modalBhagwan')">View Profile</button>
+                    
+            </div>
+            <div class="butt">
+                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+
+            </div>
+        </div>
+        <div class="cards">
+            <div class="image">
+                <img src="images/ccc.png">
+            </div>
+            <div class="title">
+                <h3>Dr. Vidhata Bhandari KC</h3>
+            </div>
+            <div class="des">
+                <p>With qualifications including an MBBS and MD in Pediatrics, Dr. Vidhata Bhandari KC offers personalized pediatric services at Clinic One. She is available for consultations during specific morning and evening hours.</p>
+                    <button onclick="openModal('modalBhagwan')">View Profile</button>
+                    
+            </div>
+            <div class="butt">
+                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+
+            </div>
+        </div>
+        <div class="cards">
+            <div class="image">
+                <img src="https://clinicone.com.np/wp-content/uploads/2024/09/admin-ajax.php-2.webp">
+            </div>
+            <div class="title">
+                <h3>Dr. Sushil Bhandari</h3>
+            </div>
+            <div class="des">
+                <p>Dr. Sushil Bhandari has an MBBS and MD in Pediatrics and provides patient care at designated times. He focuses on creating a nurturing and comfortable environment for young patients.​</p>
+                    <button onclick="openModal('modalBhagwan')">View Profile</button>
+                    
+            </div>
+            <div class="butt">
+                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

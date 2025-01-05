@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neurology</title>
+    <link rel="stylesheet" href="orthopedics.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Med-Appoint</div>
+        <ul class="nav-link" id="navLink">
+            <li><a href="DUMMY.HTM">Home</a></li>
+            <li><a href="aboutus.htm">About Us</a></li>
+            <li>
+                <a href="FindDoctors.htm">Find Doctors</a>
+                <ul class="dropdown-menu">
+                    <li><a href="cardo.htm">Dept . of Cardioogy</a></li>
+                    <li><a href="neuro.htm">Dept. of Neurology</a></li>
+                    <li><a href="Gynecologist.htm">Dept . of Gynecology</a></li>
+                    <li><a href="orthopedics.htm">Dept . of Orthopedics</a></li>
+                    <li><a href="pedia.htm">Dept . of Pediatrics</a></li>
+                    <li><a href="oncology.htm">Dept . of Oncology</a></li>
+                    <li><a href="ENT.htm">Dept . of ENT</a></li>
+                    <li><a href="urology.htm">Dept . of Urology</a></li>
+                    <li><a href="opthalmology.htm">Dept . Opthalmology</a></li>
+                </ul>
+              </li>
+              <li><a href="blog.htm">Blog</a></li>
+            <li><a href="contactus.htm">Contact Us</a></li>
+            </ul>
+                <div class="log-buttons">
+            <a href="#login.htm" class="btn">Login</a>
+            <a href="#signup" class="btn">Signup</a>
+        </div>
+        <div class="ham" id="ham">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <div class="cards-container">
+        <div class="cards">
+            <div class="image">
+                <img src="https://boneandjoints.org/uploads/2023/02/dr-image-3-250x250.jpg">
+            </div>
+            <div class="title">
+                <h3>Dr. Rajeev Raj Manandhar </h3>
+            </div>
+            <div class="des">
+                <p>An accomplished orthopedic specialist known for his expertise in trauma, arthroscopy, and sports injury treatments. With a patient-focused approach, Dr. Manandhar provides advanced care to address musculoskeletal issues and help patients regain mobility and strength​</p>
+                    <button onclick="openModal('modalBhagwan')">View Profile</button>
+                    
+            </div>
+            <div class="butt">
+                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+
+            </div>
+            
+        </div>
+        <div class="cards">
+            <div class="image">
+                <img src="images/sisir1.png">
+            </div>
+            <div class="title">
+                <h3>Dr. Shishir Lakhey</h3>
+            </div> 
+            <div class="des">
+                <p>A senior consultant orthopedic surgeon affiliated with Nepal Mediciti Hospital in Lalitpur. His extensive experience spans a wide range of orthopedic conditions, from fractures to complex joint disorders. Dr. Lakhey is recognized for his commitment to delivering high-quality care using state-of-the-art technique​ </p>
+                    <button onclick="openModal('modalBhagwan')">View Profile</button>
+                    
+            </div>
+            <div class="butt">
+                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+
+            </div>
+        </div>
+        <div class="cards">
+            <div class="image">
+                <img src="https://www.nepalmediciti.com/images/doctors/6916.jpg">
+            </div>
+            <div class="title">
+                <h3>Dr. Daman Kumar Jha</h3>
+            </div>
+            <div class="des">
+                <p>A highly regarded orthopedic expert offering treatment for various musculoskeletal conditions. Known for his thorough diagnostic skills and personalized care plans, Dr. Jha has helped numerous patients achieve improved functionality and pain relief.​</p>
+                    <button onclick="openModal('modalBhagwan')">View Profile</button>
+                    
+            </div>
+            <div class="butt">
+                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+
+            </div>
+        </div>
+        <div class="cards">
+            <div class="image">
+                <img src="https://www.bbhospital.com.np/Content/img/b2ce099a-d1bd-409f-839e-084cd0cd2866.jpg">
+            </div>
+            <div class="title">
+                <h3>Prof. Dr. Amit Joshi</h3>
+            </div>
+            <div class="des">
+                <p>A distinguished consultant specializing in arthroscopy and sports injuries at B&B Teaching Hospital in Lalitpur. With over a decade of experience and more than 10,000 surgeries to his name, he is a pioneer in advanced knee procedures and arthroscopy techniques. Dr. Joshi also runs a fellowship program in sports injuries accredited by ISAKOS, reflecting his dedication to advancing the field of orthopedic​.</p>
+                    <button onclick="openModal('modalBhagwan')">View Profile</button>
+                    
+            </div>
+            <div class="butt">
+                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+
+            </div>
+        </div>
+        <div class="cards">
+            <div class="image">
+                <img src="https://pacificclinic.com.np/wp-content/uploads/2022/08/Dr.-Aayush-Shrestha-1024x1024.png">
+            </div>
+            <div class="title">
+                <h3>Dr. Aayush Shrestha</h3>
+            </div>
+            <div class="des">
+                <p>Dr. Shrestha is a renowned orthopedic and spine surgeon based in Kupondole, Lalitpur. He is known for his expertise in both surgical and non-surgical treatments for musculoskeletal issues, including spine-related conditions. Patients have praised his compassionate and professional approach, making him a trusted name in orthopedic care.​</p>
+                    <button onclick="openModal('modalBhagwan')">View Profile</button>
+                    
+            </div>
+            <div class="butt">
+                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

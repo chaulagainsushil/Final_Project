@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neurology</title>
+    <link rel="stylesheet" href="opthalmology.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Med-Appoint</div>
+        <ul class="nav-link" id="navLink">
+            <li><a href="DUMMY.HTM">Home</a></li>
+            <li><a href="aboutus.htm">About Us</a></li>
+            <li>
+                <a href="FindDoctors.htm">Find Doctors</a>
+                <ul class="dropdown-menu">
+                    <li><a href="cardo.htm">Dept . of Cardioogy</a></li>
+                    <li><a href="neuro.htm">Dept. of Neurology</a></li>
+                    <li><a href="Gynecologist.htm">Dept . of Gynecology</a></li>
+                    <li><a href="orthopedics.htm">Dept . of Orthopedics</a></li>
+                    <li><a href="pedia.htm">Dept . of Pediatrics</a></li>
+                    <li><a href="oncology.htm">Dept . of Oncology</a></li>
+                    <li><a href="ENT.htm">Dept . of ENT</a></li>
+                    <li><a href="urology.htm">Dept . of Urology</a></li>
+                    <li><a href="opthalmology.htm">Dept . Opthalmology</a></li>
+                </ul>
+              </li>
+              <li><a href="blog.htm">Blog</a></li>
+            <li><a href="contactus.htm">Contact Us</a></li>
+            </ul>
+                <div class="log-buttons">
+            <a href="#login.htm" class="btn">Login</a>
+            <a href="#signup" class="btn">Signup</a>
+        </div>
+        <div class="ham" id="ham">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <div class="cards-container">
+        <div class="cards">
+            <div class="image">
+                <img src="images/gov.png">
+            </div>
+            <div class="title">
+                <h3>Dr. Govinda Paudyal</h3>
+            </div>
+            <div class="des">
+                <p>Cataract & Vitreo-Retina Surgeon at Netradham Eye Care Center, known for expertise in treating cataracts and retinal conditions.​</p>
+                    <button onclick="openModal('modalBhagwan')">View Profile</button>
+                    
+            </div>
+            <div class="butt">
+                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+
+            </div>
+            
+        </div>
+        <div class="cards">
+            <div class="image">
+                <img src="images/qqq.png">
+            </div>
+            <div class="title">
+                <h3>Dr. Sanyam Bajimaya</h3>
+            </div> 
+            <div class="des">
+                <p>Cataract & Vitreo-Retina Surgeon at Netradham Eye Care Center, specializing in retinal diseases and advanced cataract treatments. </p>
+                    <button onclick="openModal('modalBhagwan')">View Profile</button>
+                    
+            </div>
+            <div class="butt">
+                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+
+            </div>
+        </div>
+        <div class="cards">
+            <div class="image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyAakDfwBrlQ0U6KOqkAa0BEmXJQIjilClrQ&s">
+            </div>
+            <div class="title">
+                <h3>Dr. Sangeeta Shrestha</h3>
+            </div>
+            <div class="des">
+                <p>    Pediatric Ophthalmologist at Netradham Eye Care Center, focusing on eye care for children    ​</p>
+                    <button onclick="openModal('modalBhagwan')">View Profile</button>
+                    
+            </div>
+            <div class="butt">
+                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+
+            </div>
+        </div>
+        <div class="cards">
+            <div class="image">
+                <img src="https://netradham.com.np/wp-content/uploads/2023/02/Drjeevanstha-jpg.webp">
+            </div>
+            <div class="title">
+                <h3>Dr. Prof. Jeevan Kumar Shrestha</h3>
+            </div>
+            <div class="des">
+                <p> Eye & Retina Specialist at Netradham Eye Care Center, known for treating retinal diseases and other complex eye conditions.</p>
+                    <button onclick="openModal('modalBhagwan')">View Profile</button>
+                    
+            </div>
+            <div class="butt">
+                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

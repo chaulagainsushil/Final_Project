@@ -1,0 +1,94 @@
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #eaeaea; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background: #f9f9f9; 
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #333; /* Darker gray text */
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    margin-bottom: 1rem;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    border-radius: 50px; /* Rounded corners like in the image */
+    background-color: #f2f2f2;
+    text-indent: 10px; /* Add padding inside the text field */
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.input-group input:focus {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: #666; 
+}
+
+.options label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.options a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.options a:hover {
+    color: #0056b3;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.9rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffffff; /* White text */
+    background-color: #000000; /* Black background */
+    border: none;
+    border-radius: 50px; /* Fully rounded button */
+    cursor: pointer;
+    text-transform: uppercase; /* Uppercase text for "Sign In" */
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+}
+
+.btn:hover {
+    background-color: #333333; /* Slightly lighter black on hover */
+    transform: translateY(-2px); /* Slight hover effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}

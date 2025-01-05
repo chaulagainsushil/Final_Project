@@ -1,0 +1,299 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #007bff;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links li {
+    padding: 10px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: black;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #007bff;
+    display: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px 0px;
+    z-index: 1;
+    margin-left: 650px;
+  }
+
+  .navbar li:hover .dropdown-menu {
+    display: block; /* Show the dropdown on hover */
+  }
+
+.burger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.burger span {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    margin: 4px;
+}
+
+.navbar .log-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.navbar .log-buttons .btn {
+    background-color: white;
+    color: #007bff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar .log-buttons .btn:hover {
+    background-color: black;
+    color: white;
+}
+
+.hero {
+    background-color: #f8f8f8;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.heading h1 {
+    color: blue;
+    font-size: 55px;
+    text-align: center;
+    margin-top: 35px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 65px auto;
+}
+
+.hero-content {
+    flex: 1;
+    width: 600px;
+    margin: 0px 25px;
+}
+
+.hero-content h2 {
+    font-size: 38px;
+    margin-bottom: 20px;
+    color: #030000;
+}
+
+.hero-content p {
+    font-size: 24px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    color: #0a0101;
+}
+
+.hero-content button {
+    display: inline-block;
+    background-color: blue;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 5px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.hero-content button:hover {
+    background-color: #ff6347;
+    transform: scale(1.1);
+}
+
+.hero-image {
+    flex: 1;
+    width: 600px;
+    margin: auto;
+    animation: fadeInRight 2s ease;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.footer {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-about, .footer-links, .footer-contact {
+    flex: 1;
+    margin: 10px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin: 5px 0;
+}
+
+.footer-links ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: black;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    border-top: 1px solid white;
+    padding-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: #007bff;
+        position: absolute;
+        top: 60px;
+        left: 0;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .burger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+    }
+
+    .navbar .log-buttons {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .navbar .log-buttons .btn {
+        margin: 10px 0;
+    }
+
+    .heading h1 {
+        font-size: 45px;
+        margin-top: 30px;
+    }
+
+    .hero {
+        margin: 0;
+        padding: 20px;
+    }
+
+    .container {
+        width: 100%;
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .hero-content {
+        width: 100%;
+        margin: 35px 0;
+    }
+
+    .hero-content h2 {
+        font-size: 30px;
+    }
+
+    .hero-content p {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    .hero-content button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+
+    .hero-image {
+        width: 100%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-about, .footer-links, .footer-contact {
+        text-align: center;
+    }
+}
+
+

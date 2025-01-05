@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Med-Appoint</div>
+        <ul class="nav-linkss" id="Linkss">
+            <li><a href="dummy.htm">Home</a></li>
+            <li><a href="aboutus.htm">About Us</a></li>
+            <li>
+                <a href="FindDoctors.htm">Find Doctors</a>
+                <ul class="dropdown-menu">
+                    <li><a href="cardo.htm">Dept . of Cardioogy</a></li>
+                    <li><a href="neuro.htm">Dept. of Neurology</a></li>
+                    <li><a href="Gynecologist.htm">Dept . of Gynecology</a></li>
+                    <li><a href="orthopedics.htm">Dept . of Orthopedics</a></li>
+                    <li><a href="pedia.htm">Dept . of Pediatrics</a></li>
+                    <li><a href="oncology.htm">Dept . of Oncology</a></li>
+                    <li><a href="ENT.htm">Dept . of ENT</a></li>
+                    <li><a href="urology.htm">Dept . of Urology</a></li>
+                    <li><a href="opthalmology.htm">Dept . Opthalmology</a></li>               
+                 </ul>
+              </li>
+              <li><a href="blog.htm">Blog</a></li>
+            <li><a href="contactus.htm">Contact Us</a></li>
+        </ul>
+        <div class="log-buttons">
+            <a href="#login" class="btn">Login</a>
+            <a href="#signup" class="btn">Signup</a>
+        </div>
+        <div class="burger1" id="burger1">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="form">
+            <div class="contact-info">
+                <H2 class="TITLE">Let's get in touch</H2>
+                <p class="text">
+                    Get in touch with Med-Appoint for any inquiries, feedback, or assistance. We're here to help yoou with your healthcare needs, ensuring a seamless appointment booking experience. At Med Appoint, we're here to assist you in managing your healthcare needs. Whether you have questions about booking appointments, need help finding the right doctor, or have feedback on our services, our team is ready to support you. Fill out the form, and we'll get back to you as soon as possible.
+                </p>
+                <div class="info">
+                    <div class="information">
+                        <img src="phone.png" class="icon" alt="">
+                        <p>023-540889</p>
+                    </div>
+                    <div class="information">
+                        <img src="email.png" class="icon" alt="">
+                        <p>Appoint-Med@gmail.com</p>
+                    </div>
+                    <div class="information">
+                        <img src="location.png" class="icon" alt="">
+                        <p>Balkumari, Lalitpur</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <span class="circle one"></span>
+                <span class="circle two"></span>
+
+                <form action="#" method="POST">
+                    <h3 class="title">Contact Us</h3>
+                    <div class="input-container">
+                        <input type="text" name="name" class="input" required>
+                        <label for="">Username</label>
+                        <span>Username</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="email" name="email" class="input" required>
+                        <label for="">Email</label>
+                        <span>Email</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="tel" name="phone" class="input" required>
+                        <label for="">Phone</label>
+                        <span>Phone</span>
+                    </div>
+                    <div class="input-container textarea">
+                        <textarea name="message" class="input" required></textarea>
+                        <label for="">Message</label>
+                    </div>
+                    <input type="submit" value="Send" class="btn">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="contact.js"></script>
+    <script>
+       const hamburger = document.getElementById('burger1');
+const navLinks = document.getElementById('Linkss');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+     function scrollToUsername() {
+            document.getElementById('username').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+});
+
+    </script>
+    
+   
+</body>
+</html>

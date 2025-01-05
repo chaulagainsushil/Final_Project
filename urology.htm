@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neurology</title>
+    <link rel="stylesheet" href="urology.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Med-Appoint</div>
+        <ul class="nav-link" id="navLink">
+            <li><a href="DUMMY.HTM">Home</a></li>
+            <li><a href="aboutus.htm">About Us</a></li>
+            <li>
+                <a href="FindDoctors.htm">Find Doctors</a>
+                <ul class="dropdown-menu">
+                    <li><a href="cardo.htm">Dept . of Cardioogy</a></li>
+                  <li><a href="neuro.htm">Dept. of Neurology</a></li>
+                  <li><a href="Gynecologist.htm">Dept . of Gynecology</a></li>
+                  <li><a href="orthopedics.htm">Dept . of Orthopedics</a></li>
+                  <li><a href="pedia.htm">Dept . of Pediatrics</a></li>
+                  <li><a href="oncology.htm">Dept . of Oncology</a></li>
+                  <li><a href="ENT.htm">Dept . of ENT</a></li>
+                  <li><a href="urology.htm">Dept . of Urology</a></li>
+                  <li><a href="opthalmology.htm">Dept . Opthalmology</a></li>
+                </ul>
+              </li>
+              <li><a href="blog.htm">Blog</a></li>
+            <li><a href="contactus.htm">Contact Us</a></li>
+            </ul>
+                <div class="log-buttons">
+            <a href="#login.htm" class="btn">Login</a>
+            <a href="#signup" class="btn">Signup</a>
+        </div>
+        <div class="ham" id="ham">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+    <div class="cards-container">
+        <div class="cards">
+            <div class="image">
+                <img src="images/bbb.png">
+            </div>
+            <div class="title">
+                <h3>Dr. Bijay Mansingh Katwal</h3>
+            </div>
+            <div class="des">
+                <p>Dr. Katwal is a highly experienced urologist and kidney transplant surgeon. He is specialized in managing prostate health, urinary stone disease, and urological cancers, including those of the kidney, prostate, bladder, and testis. He works at Sumeru Hospital, Dhapakhel, and has pioneered laparoscopic kidney transplant surgeries in Nepal. He also has expertise in laparoscopic and robotic surgerie.​</p>
+                    <button onclick="openModal('modalBhagwan')">View Profile</button>
+                    
+            </div>
+            <div class="butt">
+                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+
+            </div>
+            
+        </div>
+        <div class="cards">
+            <div class="image">
+                <img src="images/mahesh2.png">
+            </div>
+            <div class="title">
+                <h3>Dr. Mahesh Bahadur Adhikari</h3>
+            </div> 
+            <div class="des">
+                <p>Serving as the Principal Consultant and Head of Urology at Nepal Mediciti, Dr. Adhikari is a seasoned urologist with over 20 years of experience. He specializes in urinary stone disease, prostate health, and uro-oncology. Dr. Adhikari has contributed significantly to the field of endourology and has trained many urologists across Nepal. </p>
+                    <button onclick="openModal('modalBhagwan')">View Profile</button>
+                    
+            </div>
+            <div class="butt">
+                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+
+            </div>
+        </div>
+        <div class="cards">
+            <div class="image">
+                <img src="images/jit1.png">
+            </div>
+            <div class="title">
+                <h3>Dr. Jit Prakash Shrestha</h3>
+            </div>
+            <div class="des">
+                <p>  A consultant urologist and andrologist with extensive experience. He provides consultations both in-person and online. His schedule is from Sunday to Friday starting at 2 PM. He has worked in various hospitals and clinics across Nepal and offers specialized care in urology and andrology​                    ​</p>
+                    <button onclick="openModal('modalBhagwan')">View Profile</button>
+                    
+            </div>
+            <div class="butt">
+                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+
+            </div>
+        </div>
+        <div class="cards">
+            <div class="image">
+                <img src="https://clinicone.com.np/wp-content/uploads/2024/09/Dr.-Prashant-Mishra-1.jpg">
+            </div>
+            <div class="title">
+                <h3>Dr. Prashant Mishra</h3>
+            </div>
+            <div class="des">
+                <p> Consultant in urology with a specialization in urooncology. He holds an MBBS and MS in Urology and provides consultation on an on-call basis. Dr. Mishra is highly regarded for his expertise in treating urological conditions including cancers of the urinary system.</p>
+                    <button onclick="openModal('modalBhagwan')">View Profile</button>
+                    
+            </div>
+            <div class="butt">
+                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

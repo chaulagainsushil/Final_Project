@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Appointment Booking</title>
+        <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f9fc;
+            color: #264653;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 5px;
+        }
+
+        .time-slot {
+            margin-top: 20px;
+        }
+
+        .slot {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 8px;
+            border: 1px solid #2a9d8f;
+            background-color: #e9c46a;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .slot.taken {
+            background-color: #f4a261;
+            cursor: not-allowed;
+        }
+
+        .slot:hover:not(.taken) {
+            background-color: #2a9d8f;
+            color: white;
+        }
+
+        .slot.selected {
+            border: 2px solid #2a9d8f;
+            background-color: #264653;
+            color: white;
+        }
+
+        .available-count {
+            margin-top: 10px;
+            font-size: 16px;
+            text-align: right;
+        }
+
+        .btn-submit {
+            background-color: #2a9d8f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        .btn-submit:hover {
+            background-color: #264653;
+        }
+    </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <h2>Appointment Booking</h2>
+
+            <!-- Appointment Date -->
+            <div class="form-group">
+                <label for="date">Select Appointment Date</label>
+                <input type="date" id="date" required>
+            </div>
+
+            <!-- Hospital Selection -->
+            <div class="form-group">
+                <label for="hospital">Select Hospital</label>
+                <select id="hospital" name="hospital"></select>
+            </div>
+
+            <!-- Department Selection -->
+            <div class="form-group">
+                <label for="department">Select Department</label>
+                <select id="department" name="department" disabled></select>
+            </div>
+
+            <!-- Doctor Selection -->
+            <div class="form-group">
+                <label for="doctor">Select Doctor</label>
+                <select id="doctor" name="doctor" disabled></select>
+            </div>
+
+            <!-- Patient Information -->
+            <div class="form-group">
+                <label for="patient_name">Patient Name</label>
+                <input type="text" id="patient_name" required>
+            </div>
+            <div class="form-group">
+                <label for="patient_age">Patient Age</label>
+                <input type="number" id="patient_age" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="contact_number">Contact Number</label>
+                <input type="text" id="contact_number" required>
+            </div>
+
+            <!-- Time Slot Selection -->
+            <div class="time-slot">
+                <h3>Available Time Slots</h3>
+                <div id="slots"></div>
+                <div class="available-count" id="available-count">Available
+                    Slots: 0</div>
+            </div>
+
+            <button class="btn-submit">Book Appointment</button>
+        </div>
+
+        <script>
+        // Load Hospitals
+        fetch('get_hospitals.php')
+            .then(response => response.json())
+            .then(hospitals => {
+                const hospitalSelect = document.getElementById('hospital');
+                hospitalSelect.innerHTML = "<option value=''>-- Select Hospital --</option>";
+                hospitals.forEach(hospital => {
+                    hospitalSelect.innerHTML += `<option value="${hospital.Hospital_id}">${hospital.Hospital_name}</option>`;
+                });
+            });
+
+        // Load Departments on Hospital Change
+        document.getElementById('hospital').addEventListener('change', function () {
+            const hospitalId = this.value;
+            fetch(`get_departments.php?hospitalId=${hospitalId}`)
+                .then(response => response.json())
+                .then(departments => {
+                    const departmentSelect = document.getElementById('department');
+                    departmentSelect.disabled = false;
+                    departmentSelect.innerHTML = "<option value=''>-- Select Department --</option>";
+                    departments.forEach(department => {
+                        departmentSelect.innerHTML += `<option value="${department.Depart_id}">${department.Name}</option>`;
+                    });
+                });
+        });
+
+
+        document.getElementById('department').addEventListener('change', function () {
+    const departmentId = this.value;
+    const hospitalId = document.getElementById('hospital').value;
+
+    fetch(`get_doctors.php?hospitalId=${hospitalId}&departmentId=${departmentId}`)
+        .then(response => response.json())
+        .then(doctors => {
+            const doctorSelect = document.getElementById('doctor');
+            doctorSelect.disabled = false;
+            doctorSelect.innerHTML = "<option value=''>-- Select Doctor --</option>";
+            doctors.forEach(doctor => {
+                doctorSelect.innerHTML += `<option value="${doctor.Doc_id}">${doctor.Doc_name}</option>`;
+            });
+        });
+});
+
+
+        // Load Time Slots on Doctor Selection
+        document.getElementById('doctor').addEventListener('change', function () {
+            const doctorId = this.value;
+            const date = document.getElementById('date').value;
+
+            if (date) {
+                fetch(`get_timeslots.php?doctorId=${doctorId}&date=${date}`)
+                    .then(response => response.json())
+                    .then(slots => {
+                        const slotsContainer = document.getElementById('slots');
+                        slotsContainer.innerHTML = '';
+                        let availableCount = 0;
+
+                        slots.forEach(time => {
+                            availableCount++;
+                            slotsContainer.innerHTML += `<div class="slot">${time}</div>`;
+                        });
+
+                        document.getElementById('available-count').textContent = `Available Slots: ${availableCount}`;
+                    });
+            }
+        });
+
+        // Highlight selected slot and submit form
+        document.getElementById('slots').addEventListener('click', function (e) {
+            if (e.target.classList.contains('slot') && !e.target.classList.contains('taken')) {
+                document.querySelectorAll('.slot').forEach(slot => slot.classList.remove('selected'));
+                e.target.classList.add('selected');
+            }
+        });
+
+        document.querySelector('.btn-submit').addEventListener('click', function () {
+            const patientName = document.getElementById('patient_name').value;
+            const patientAge = document.getElementById('patient_age').value;
+            const contactNumber = document.getElementById('contact_number').value;
+            const appointmentDate = document.getElementById('date').value;
+            const hospitalId = document.getElementById('hospital').value;
+            const departmentId = document.getElementById('department').value;
+            const doctorId = document.getElementById('doctor').value;
+            const selectedSlot = document.querySelector('.slot.selected');
+
+            if (!selectedSlot) {
+                alert('Please select a time slot.');
+                return;
+            }
+
+            const appointmentTime = selectedSlot.textContent;
+
+            fetch('save_appointment.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `patient_name=${encodeURIComponent(patientName)}&patient_age=${patientAge}&contact_number=${encodeURIComponent(contactNumber)}&appointment_date=${appointmentDate}&appointment_time=${appointmentTime}&hospital_id=${hospitalId}&department_id=${departmentId}&doctor_id=${doctorId}`
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        alert(data.message);
+                        location.reload(); // Reload the page after successful booking
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while booking the appointment.');
+                });
+        });
+    </script>
+    </body>
+
+</html>

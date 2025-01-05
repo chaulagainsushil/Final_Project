@@ -1,0 +1,80 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+  }
+  
+  .table-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow-x: auto;
+  }
+  
+  .styled-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .styled-table thead tr {
+    background-color: #4caf50;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  .styled-table th, .styled-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+  }
+  
+  .styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .styled-table tbody tr:hover {
+    background-color: #f1f7ff;
+  }
+  
+  /* Adjust column widths */
+  .styled-table th:first-child, .styled-table td:first-child {
+    width: 50px; /* Set width for the serial number column */
+    text-align: center;
+  }
+  
+  .styled-table tbody tr td .reschedule-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .styled-table tbody tr td .reschedule-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Make table responsive */
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  .styled-table th, .styled-table td {
+    text-align: center;
+  }
+  
+  @media (max-width: 600px) {
+    .styled-table th, .styled-table td {
+      font-size: 14px;
+      padding: 8px;
+    }
+  }
+  

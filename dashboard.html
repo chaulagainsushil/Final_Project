@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Med-Appoint - Online Doctor Appointment</title>
+        <link rel="stylesheet" href="styldash.css">
+    </head>
+    <body>
+        <nav class="navbar">
+            <div class="logo">Med-Appoint</div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="aboutus.htm">About Us</a></li>
+                <li>
+                    <a href="FindDoctors.htm">Find Doctors</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cardo.htm">Dept . of Cardilogy</a></li>
+                        <li><a href="neuro.htm">Dept. of Neurology</a></li>
+                        <li><a href="Gynecologist.htm">Dept . of
+                                Gynecology</a></li>
+                        <li><a href="orthopedics.htm">Dept . of
+                                Orthopedics</a></li>
+                        <li><a href="pedia.htm">Dept . of Pediatrics</a></li>
+                        <li><a href="oncology.htm">Dept . of Oncology</a></li>
+                        <li><a href="ENT.htm">Dept . of ENT</a></li>
+                        <li><a href="urology.htm">Dept . of Urology</a></li>
+                        <li><a href="opthalmology.htm">Dept .
+                                Opthalmology</a></li>
+                    </ul>
+                </li>
+                <li><a href="blog.htm">Blog</a></li>
+                <li><a href="contactus.htm">Contact Us</a></li>
+
+            </ul>
+
+            <h4 id="welcome">hello sushil </h4>
+            <div class="log-buttons">
+
+                <a href="my_appointments.php" class="btn">My Appointment</a>
+                <!-- <a href="#signup" class="btn">Signup</a>-->
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+
+        <section class="hero" id="home">
+            <div class="hero-text">
+                <h1>Med-Appoint</h1>
+                <h3>Way of Easy Healthcare</h3>
+                <a href="BookAppointment.html" class="btn">Book Appointment</a>
+            </div>
+            <div class="hero-image">
+                <img
+                    src="https://png.pngtree.com/png-clipart/20230927/original/pngtree-photo-men-doctor-physician-chest-smiling-png-image_13143575.png"
+                    alt="Doctor Image">
+            </div>
+        </section>
+
+        <section class="departments" id="departments">
+            <h2>Our Departments</h2>
+            <div class="department-cards">
+                <div class="card">
+                    <img src="images/tkc.jpg" alt="Cardiology"
+                        style="width:200px">
+                    <h3>Dr.Toran Kc</h3>
+                    <h3> <a href="ent.htm">ENT</a> </h3>
+                    <p> Expertise in ENT and Head & Neck Surgery.</p>
+                </div>
+                <div class="card">
+                    <img
+                        src="https://english.onlinekhabar.com/wp-content/uploads/2022/10/Dr-Bhagwan-Koirala-smiling.jpg"
+                        alt="Neurology">
+                    <h3>Dr.Bhagwan Koirala</h3>
+                    <h3><a href="neuro.htm">Neurology</a></h3>
+                    <p>Expert doctors for brain and nervous system
+                        disorders.</p>
+                </div>
+                <div class="card">
+                    <img
+                        src="https://www.nepalmediciti.com/images/doctors/83PHY.jpg"
+                        alt="Gynecology" style="width:170px">
+                    <h3>Dr.Roshini Kc</h3>
+                    <h3><a href="gynecologist.htm">Gynecology</a></h3>
+                    <p>Expert doctors for women's health.</p>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <h3>Med-Appoint</h3>
+                    <p>Med-Appoint is a trusted solution for medical
+                        appointments. We help patients easily schedule
+                        appointments with doctors and other health
+                        professionals.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#departments">Departments</a></li>
+                        <li><a href="#contact">Doctors</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>Email: support@medappoint.com</p>
+                    <p>Phone: +123-456-7890</p>
+                    <p>Address: 123 Health St, Wellness City</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Med-Appoint. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+        <script>
+            const welcome = document.getElementById('welcome');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+        function getCookie(name) {
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(';');
+    
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i].trim();
+        
+        if (c.indexOf(nameEQ) === 0) {
+            return decodeURIComponent(c.substring(nameEQ.length, c.length));
+        }
+    }
+    
+    return null; 
+}
+
+
+let username = getCookie("email");
+console.log(username); 
+if (username){
+   welcome.innerText = 'Hello  '  +username 
+}
+else{
+    welcome.innerText = ''
+}
+
+    </script>
+
+    </body>
+</html>

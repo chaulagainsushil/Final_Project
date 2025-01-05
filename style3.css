@@ -1,0 +1,263 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #007bff;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.nav-link {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-link li {
+    padding: 10px;
+}
+
+.nav-link a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-link a:hover {
+    color: black;
+}
+
+.ham {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.ham span {
+    height: 3px;
+    width: 25px;
+    background-color: rgb(14, 2, 2);
+    margin: 4px;
+}
+
+.navbar .log-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.navbar .log-buttons .btn {
+    background-color: white;
+    color: #007bff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar .log-buttons .btn:hover {
+    background-color: black;
+    color: white;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: lightgreen;
+    display: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px 0px;
+    z-index: 1;
+    margin-left: 650px;
+  }
+
+  .navbar li:hover .dropdown-menu {
+    display: block; /* Show the dropdown on hover */
+  }
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 100px;
+    justify-content: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;  
+}
+
+.cards {
+    flex: 1 1 300px;
+    max-width: 300px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    padding: 15px;
+    transition: transform 0.3s;
+}
+
+.cards:hover {
+    transform: translateY(-10px);
+}
+
+.image img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 2%;
+}
+
+.title, .des {
+    text-align: center;
+    margin-top: 10px;
+}
+
+button {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+button:hover {
+    background-color: aqua;
+    color: black;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .ham {
+        display: flex;
+    }
+
+    .nav-link {
+        display: none;
+        flex-direction: column;
+        background-color: #007bff;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 200px;
+    }
+
+    .nav-link.show {
+        display: flex;
+    }
+
+    .log-buttons {
+        display: none;
+    }
+}
+
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+.butt{
+    margin-left: 78px;
+   margin-top: 5px;
+}
+.jjj{
+    background-color:white;
+}
+.jjj:hover{
+    background-color: yellowgreen;
+}
+.footer {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-about, .footer-links, .footer-contact {
+    flex: 1;
+    margin: 10px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin: 5px 0;
+}
+
+.footer-links ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: black;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    border-top: 1px solid white;
+    padding-top: 10px;
+}
