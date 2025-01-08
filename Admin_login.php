@@ -1,6 +1,6 @@
 <?php
 // Admin_Login.php
-
+session_start();
 // Database connection
 $host = 'localhost'; // Replace with your database host
 $dbName = 'med_appoint'; // Database name
@@ -27,13 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Query the database for the user
-    $stmt = $conn->prepare("SELECT * FROM user WHERE email = :email");
+    $stmt = $conn->prepare("SELECT * FROM user WHERE email = :email and role='admin'");
     $stmt->bindParam(':email', $email, PDO::PARAM_STR);
     $stmt->execute();
 
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($user && password_verify($password, $user['password'])) {
+    if ($user && ($password== $user['Password'])) {
+        $_SESSION["ïsAdmin"]=true;
         // Login successful
         echo json_encode(["status" => "success", "redirect" => "Admin_dashboard.html"]);
     } else {

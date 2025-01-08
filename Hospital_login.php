@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $conn->real_escape_string($_POST['email']);
     $password = $conn->real_escape_string($_POST['password']);
 
-    $sql = "SELECT id, Email, Password,HospitalId, Name FROM user WHERE Email = ? and HospitalId is not null  " ;
+    $sql = "SELECT id, Email, Password,HospitalId, Name FROM user WHERE Email = ? and role ='hospital'" ;
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();

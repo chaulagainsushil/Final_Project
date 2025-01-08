@@ -20,8 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
 
     
-    $sql = "INSERT INTO user (Name, Email, Ph_Number, Citizenship_no, Address, Password, Date_of_birth) 
-            VALUES ('$name', '$email', '$phone_number', '$citizenship_number', '$address', '$password','$date_of_birth')";
+    $sql = "INSERT INTO user (Name, Email, Ph_Number, Citizenship_no, Address, Password, Date_of_birth,Role) 
+            VALUES ('$name', '$email', '$phone_number', '$citizenship_number', '$address', '$password','$date_of_birth','user')";
 
     if (mysqli_query($conn, $sql)) {
         echo "Data inserted successfully";

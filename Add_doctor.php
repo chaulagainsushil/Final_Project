@@ -1,38 +1,36 @@
 <?php
-// Database connection
+// Database connection settings
 $host = 'localhost'; // Replace with your database host
-$dbName = 'med_appoint'; // Database name
+$dbname = 'med_appoint'; // Replace with your database name
 $username = 'root'; // Replace with your database username
 $password = 'root'; // Replace with your database password
 
 // Connect to the database
-$conn = new mysqli($host, $username, $password, $dbName);
+$conn = new mysqli($host, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if POST data is received
+// Check if form data is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $depart_id = $_POST['depart_id'];
-    $name = $_POST['name'];
+    $doc_id = $_POST['doc_id'];
+    $doc_name = $_POST['doc_name'];
 
-    // Validate input
-    if (empty($depart_id) || empty($name)) {
+    // Validate inputs
+    if (empty($doc_id) || empty($doc_name)) {
         echo "Please fill out all fields.";
         exit;
     }
 
-    // Insert data into the Department table
-    $sql = "INSERT INTO Department (Depart_id, Name) VALUES ('$depart_id', '$name')";
+    // Insert data into the database
+    $sql = "INSERT INTO Doctors (Doc_id, Doc_name) VALUES ('$doc_id', '$doc_name')";
     if ($conn->query($sql) === TRUE) {
-        echo "Department added successfully!";
+        echo "Doctor added successfully!";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
-} else {
-    echo "Invalid request method.";
 }
 
 // Close the connection
