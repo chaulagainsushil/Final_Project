@@ -1,8 +1,8 @@
 <?php
-// session_start();
+ session_start();
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "root";
 $dbname = "med_appoint";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -21,8 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $doctorId = (int)$_POST['doctor_id'];
     $hospitalId = (int)$_POST['hospital_id'];
     $departmentId = (int)$_POST['department_id'];
-    $user_id =1;//(int)$_SESSION['user_id'];
-echo 'i am herer'
+    $userId =(int)$_SESSION['user_id'];
+
     // Check if the selected time slot is already booked
     $checkSlotQuery = "SELECT * FROM appointments WHERE doctor_id = ? AND appointment_date = ? AND appointment_time = ?";
     $stmt = $conn->prepare($checkSlotQuery);

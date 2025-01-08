@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 // Database connection
 $servername = "localhost";
 $username = "root";
-$password = ""; 
+$password = "root"; 
 $dbname = "med_appoint";
 
 $conn = new mysqli($servername, $username, $password, $dbname);

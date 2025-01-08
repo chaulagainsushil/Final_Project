@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Med-Appoint</title>
+        <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+        }
+
+        .navbar {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar span {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-button {
+            background-color: #0056b3;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-button:hover {
+            background-color: #003d80;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 250px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border-radius: 5px;
+            right: 0;
+            margin-top: 10px;
+        }
+
+        .dropdown-content span {
+            display: block;
+            color: black;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border-bottom: 1px solid #f1f1f1;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dropdown-content span:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content span:hover {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .dropdown.show .dropdown-content {
+            display: block;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 100px;
+            padding: 20px;
+        }
+
+        .container h1 {
+            color: #007bff;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .container p {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .container h1 {
+                font-size: 36px;
+            }
+
+            .container p {
+                font-size: 16px;
+            }
+
+            .dropdown-button {
+                font-size: 16px;
+                padding: 8px 10px;
+            }
+
+            .dropdown-content span {
+                font-size: 14px;
+                padding: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container h1 {
+                font-size: 28px;
+            }
+
+            .container p {
+                font-size: 14px;
+            }
+
+            .dropdown-button {
+                font-size: 14px;
+                padding: 6px 8px;
+            }
+
+            .dropdown-content span {
+                font-size: 12px;
+                padding: 10px;
+            }
+        }
+    </style>
+    </head>
+
+    <body>
+        <div class="navbar">
+            <span>Med-Appoint</span>
+            <div class="dropdown" id="dropdown">
+                <button class="dropdown-button" id="dropdown-button">☰
+                    Menu</button>
+                <div class="dropdown-content" id="dropdown-content">
+                    <span
+                        onclick="window.location.href='add_department.html'">Inser
+                        Department</span>
+                    <span
+                        onclick="window.location.href='insert_doctor.html'">Insert
+                        New Doctor</span>
+                    <span
+                        onclick="window.location.href='insert_hospital.html'">Insert
+                        Hospital</span>
+                    <span
+                        onclick="window.location.href='appointment_data.html'">Appointment
+                        Data</span>
+                    <span onclick="window.location.href='user_data.html'">User
+                        Data</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h1>Med-Appoint</h1>
+            <p>Way of Easy Healthcare</p>
+        </div>
+
+        <script>
+        const dropdownButton = document.getElementById("dropdown-button");
+        const dropdown = document.getElementById("dropdown");
+
+        dropdownButton.addEventListener("click", function (e) {
+            e.stopPropagation(); // Prevent event bubbling
+            dropdown.classList.toggle("show");
+        });
+
+        document.addEventListener("click", function () {
+            dropdown.classList.remove("show");
+        });
+    </script>
+    </body>
+
+</html>

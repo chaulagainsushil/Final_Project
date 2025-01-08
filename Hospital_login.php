@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $conn->real_escape_string($_POST['email']);
     $password = $conn->real_escape_string($_POST['password']);
 
-    $sql = "SELECT id, Email, Password, Name FROM user WHERE Email = ? and HospitalId is null";
+    $sql = "SELECT id, Email, Password,HospitalId, Name FROM user WHERE Email = ? and HospitalId is not null  " ;
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -26,13 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = $result->fetch_assoc();
         if ($user['Password'] === $password) {
             // Set session variables
-            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['hospitalId'] = $user['HospitalId'];
+            $_SESSION['name'] = $user['Name'];
             $_SESSION['email'] = $user['Email'];
 
             // Set email in cookie
             setcookie('email', $user['Email'], time() + (86400 * 30), "/"); // 30 days
             setcookie('name', $user['Name'], time() + (86400 * 30), "/");
-            echo json_encode(["status" => "success", "redirect" => "dashboard.html"]);
+            echo json_encode(["status" => "success", "redirect" => "all-appointments.php"]);
             exit();
         } else {
             echo json_encode(["status" => "error", "message" => "Incorrect password."]);
