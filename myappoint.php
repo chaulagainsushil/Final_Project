@@ -46,7 +46,7 @@ $result = $stmt->get_result();
                     <th>Patient Name</th>
                     <th>Doctor Name</th>
                     <th>Date and Time</th>
-                    <th>Reschedule Appointment</th>
+                    <!-- <th>Reschedule Appointment</th> -->
                 </tr>
             </thead>
             <tbody>
@@ -62,8 +62,7 @@ $result = $stmt->get_result();
                         <td>{$row['patient_name']}</td>
                         <td>{$row['doctor_name']}</td>
                         <td>{$dateTime}</td>
-                        <td><button
-                                class='reschedule-btn'>Reschedule</button></td>
+                        <td><button class='reschedule-btn'>Reschedule</button></td>
                     </tr>";
                     $serial++;
                     }

@@ -1,38 +1,51 @@
 <?php
-// Database connection settings
-$host = 'localhost'; // Replace with your database host
-$dbname = 'med_appoint'; // Replace with your database name
-$username = 'root'; // Replace with your database username
-$password = 'root'; // Replace with your database password
 
-// Connect to the database
+$host = 'localhost'; 
+$dbname = 'med_appoint';  
+$username = 'root';  
+$password = 'root'; 
+
+
 $conn = new mysqli($host, $username, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if form data is submitted
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $doc_id = $_POST['doc_id'];
-    $doc_name = $_POST['doc_name'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['doc_name'])) {
+    $doc_name = trim($_POST['doc_name']);
 
-    // Validate inputs
-    if (empty($doc_id) || empty($doc_name)) {
-        echo "Please fill out all fields.";
-        exit;
-    }
+ 
+    if (!empty($doc_name)) {
+        $stmt = $conn->prepare("INSERT INTO Doctors (Doc_name) VALUES (?)");
+        $stmt->bind_param("s", $doc_name);
 
-    // Insert data into the database
-    $sql = "INSERT INTO Doctors (Doc_id, Doc_name) VALUES ('$doc_id', '$doc_name')";
-    if ($conn->query($sql) === TRUE) {
-        echo "Doctor added successfully!";
+        if ($stmt->execute()) {
+            echo "<p style='color:green; text-align:center;'>Doctor added successfully!</p>";
+        } else {
+            echo "<p style='color:red; text-align:center;'>Error: " . $stmt->error . "</p>";
+        }
+        $stmt->close();
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "<p style='color:red; text-align:center;'>Please enter the doctor's name.</p>";
     }
 }
 
-// Close the connection
+
+$sql = "SELECT Doc_id, Doc_name FROM Doctors ORDER BY Doc_id ASC";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    echo "<table>";
+    echo "<tr><th>Doctor ID</th><th>Doctor Name</th></tr>";
+    while ($row = $result->fetch_assoc()) {
+        echo "<tr><td>" . htmlspecialchars($row['Doc_id']) . "</td><td>" . htmlspecialchars($row['Doc_name']) . "</td></tr>";
+    }
+    echo "</table>";
+} else {
+    echo "<p style='text-align:center;'>No doctors found.</p>";
+}
+
+
 $conn->close();
 ?>

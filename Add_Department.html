@@ -1,97 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Department</title>
-    <style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Manage Departments</title>
+        <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f7f9fc;
-            color: #264653;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        .container {
-            background-color: white;
-            padding: 30px;
+        .form-container, .table-container {
+            background: #fff;
+            padding: 20px 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             width: 100%;
+            max-width: 600px;
+            margin-bottom: 20px;
         }
 
-        .container h2 {
+        h2 {
             text-align: center;
+            color: #333;
             margin-bottom: 20px;
-            color: #2a9d8f;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
-        .form-group label {
+        label {
             display: block;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+            color: #555;
         }
 
-        .form-group input {
+        input[type="text"] {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #d1d5db;
-            border-radius: 5px;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #2a9d8f;
-        }
-
-        .btn-submit {
-            width: 100%;
-            background-color: #2a9d8f;
-            color: white;
-            border: none;
-            border-radius: 5px;
             padding: 10px;
             font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        .btn-submit:hover {
-            background-color: #264653;
+        button:hover {
+            background-color: #0056b3;
         }
 
-        .message {
-            text-align: center;
-            font-size: 14px;
-            margin-top: 10px;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        @media (max-width: 480px) {
+            .form-container, .table-container {
+                padding: 15px 20px;
+            }
+
+            button, input {
+                font-size: 14px;
+            }
         }
     </style>
-</head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+        $(document).ready(function() {
+            $("#departmentForm").submit(function(event) {
+                event.preventDefault();
+                var deptName = $("#dept_name").val();
 
-<body>
-    <div class="container">
-        <h2>Add Department</h2>
-        <form id="department-form" action="add_department.php" method="POST">
-            <div class="form-group">
-                <label for="depart_id">Department ID</label>
-                <input type="number" id="depart_id" name="depart_id" required>
-            </div>
-            <div class="form-group">
-                <label for="name">Department Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <button type="submit" class="btn-submit">Add Department</button>
-        </form>
-    </div>
-</body>
+                $.ajax({
+                    url: 'add_department.php',
+                    type: 'POST',
+                    data: { dept_name: deptName },
+                    success: function(response) {
+                        $("#departmentTable").html(response);
+                        $("#dept_name").val("");
+                    }
+                });
+            });
 
+            function loadDepartments() {
+                $.ajax({
+                    url: 'add_department.php',
+                    type: 'GET',
+                    success: function(response) {
+                        $("#departmentTable").html(response);
+                    }
+                });
+            }
+
+            loadDepartments();
+        });
+    </script>
+    </head>
+    <body>
+        <div class="form-container">
+            <h2>Add Department</h2>
+            <form id="departmentForm">
+                <div class="form-group">
+                    <label for="dept_name">Department Name:</label>
+                    <input type="text" id="dept_name" name="dept_name"
+                        placeholder="Enter Department Name" required>
+                </div>
+                <button type="submit">Add Department</button>
+            </form>
+        </div>
+
+        <div class="table-container">
+            <h2>Department List</h2>
+            <div id="departmentTable"></div>
+        </div>
+    </body>
 </html>

@@ -1,8 +1,7 @@
 <?php
 session_start();
-
-// Check if hospital is logged in
-if (!isset($_SESSION['hospitalId'])) {
+ 
+if (!isset($_SESSION['hospitalId'])in) {
     header("Location: login.php");
     exit();
 }
@@ -21,7 +20,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch all appointments for the hospital
 $sql = "SELECT a.id, a.patient_name, a.patient_age, a.contact_number, a.appointment_date, a.appointment_time, a.Appointment_Status, 
                d.Name AS department_name, doc.Doc_name 
         FROM appointments a

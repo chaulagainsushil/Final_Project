@@ -5,31 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Neurology</title>
     <link rel="stylesheet" href="gynecologist.css">
+    <style>
+        .profile-popup {
+            display: none;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 15px;
+        }
+        
+        .profile-info {
+            margin-top: 10px;
+        }
+        
+        .profile-info p {
+            margin: 8px 0;
+        }
+        
+        .profile-info ul {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">Med-Appoint</div>
         <ul class="nav-link" id="navLink">
-            <li><a href="DUMMY.HTM">Home</a></li>
+            <li><a href="aboutus.htm">Home</a></li>
             <li><a href="aboutus.htm">About Us</a></li>
-            <li>
-                <a href="FindDoctors.htm">Find Doctors</a>
-                <ul class="dropdown-menu">
-                    <li><a href="cardo.htm">Dept . of Cardioogy</a></li>
-                  <li><a href="neuro.htm">Dept. of Neurology</a></li>
-                  <li><a href="Gynecologist.htm">Dept . of Gynecology</a></li>
-                  <li><a href="orthopedics.htm">Dept . of Orthopedics</a></li>
-                  <li><a href="pedia.htm">Dept . of Pediatrics</a></li>
-                  <li><a href="oncology.htm">Dept . of Oncology</a></li>
-                  <li><a href="ENT.htm">Dept . of ENT</a></li>
-                  <li><a href="urology.htm">Dept . of Urology</a></li>
-                  <li><a href="opthalmology.htm">Dept . Opthalmology</a></li>
-                </ul>
-              </li>
-              <li><a href="blog.htm">Blog</a></li>
+            <li><a href="FindDoctors.htm">Find Doctors</a></li>
+            <li><a href="blog.htm">Blog</a></li>
             <li><a href="contactus.htm">Contact Us</a></li>
-            </ul>
-                <div class="log-buttons">
+        </ul>
+        <div class="log-buttons">
             <a href="#login.htm" class="btn">Login</a>
             <a href="#signup" class="btn">Signup</a>
         </div>
@@ -45,36 +55,52 @@
                 <img src="images/reena2.png">
             </div>
             <div class="title">
-                <h3>Dr. Reena Shrestha </h3>
+                <h3>Dr. Reena Shrestha</h3>
             </div>
             <div class="des">
-                <p> A senior consultant gynecologist at Clinic One and Patan Hospital, Dr. Shrestha specializes in family planning and female reproductive health. She has extensive experience in obstetrics and gynecology and has held academic positions at the Patan Academy of Health Sciences. Her expertise covers fertility issues, menstruation problems, and cervical cancer prevention.​</p>
-                    <button onclick="openModal('modalBhagwan')">View Profile</button>
-                    
+                <p>A senior consultant gynecologist at Clinic One and Patan Hospital, Dr. Shrestha specializes in family planning and female reproductive health.</p>
+                <button onclick="toggleProfile(event, 'profile1')">View Profile</button>
+                <div id="profile1" class="profile-popup">
+                    <div class="profile-info">
+                        <p><strong>Name:</strong> Dr. Reena Shrestha</p>
+                        <p><strong>NMC Number:</strong> 4567</p>
+                        <p><strong>Experience:</strong> 15+ years</p>
+                        <p><strong>Available Hospitals:</strong></p>
+                        <ul>
+                            <li>Clinic One</li>
+                            <li>Patan Hospital</li>
+                            <li>Patan Academy of Health Sciences</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="butt">
-                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
-
-            </div>
-            
         </div>
+
         <div class="cards">
             <div class="image">
                 <img src="images/mala.png">
             </div>
             <div class="title">
                 <h3>Dr. Mala Shrestha</h3>
-            </div> 
-            <div class="des">
-                <p>Dr. Mala Shrestha is a gynecologist and obstetrician associated with Siddhi Memorial Hospital and Ishan Children and Women Hospital. She has training in managing obstetric emergencies and advanced procedures like laparoscopy and hysteroscopy​ </p>
-                    <button onclick="openModal('modalBhagwan')">View Profile</button>
-                    
             </div>
-            <div class="butt">
-                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
-
+            <div class="des">
+                <p>Dr. Mala Shrestha is a gynecologist and obstetrician associated with Siddhi Memorial Hospital and Ishan Children and Women Hospital.</p>
+                <button onclick="toggleProfile(event, 'profile2')">View Profile</button>
+                <div id="profile2" class="profile-popup">
+                    <div class="profile-info">
+                        <p><strong>Name:</strong> Dr. Mala Shrestha</p>
+                        <p><strong>NMC Number:</strong> 5678</p>
+                        <p><strong>Experience:</strong> 12+ years</p>
+                        <p><strong>Available Hospitals:</strong></p>
+                        <ul>
+                            <li>Siddhi Memorial Hospital</li>
+                            <li>Ishan Children and Women Hospital</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
+
         <div class="cards">
             <div class="image">
                 <img src="images/kripa1.png">
@@ -83,53 +109,63 @@
                 <h3>Dr. Kripa Sherchan</h3>
             </div>
             <div class="des">
-                <p>a distinguished pediatric neurologist specializing in treating children with neurological, developmental, and behavioral disorders. His expertise extends to managing epilepsy, autism, cerebral palsy, and ADHD. Dr. Shrestha is associated with multiple clinics, including SOWA Clinic in Jawalakhel, Lalitpur. His compassionate approach and specialized knowledge make him a sought-after expert for pediatric neurological care.</p>
-                    <button onclick="openModal('modalBhagwan')">View Profile</button>
-                    
-            </div>
-            <div class="butt">
-                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
-
-            </div>
-        </div>
-        <div class="cards">
-            <div class="image">
-                <img src="https://staging.hamrodoctor.com/image.php?src=https://www.hamrodoctor.com/uploads/news/2020/November/rangina.jpeg&w=318&h=199&static=true">
-            </div>
-            <div class="title">
-                <h3>Dr. Rangina Laikangbam</h3>
-            </div>
-            <div class="des">
-                <p>Dr. Laikangbam is an endoscopic gynecologist who has completed over 1,000 cases at Kantipur and BlueCross Hospitals. She specializes in advanced laparoscopic and hysteroscopic surgeries​</p>
-                    <button onclick="openModal('modalBhagwan')">View Profile</button>
-                    
-            </div>
-            <div class="butt">
-                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
-
-            </div>
-        </div>
-        <div class="cards">
-            <div class="image">
-                <img src="images/eee.png">
-            </div>
-            <div class="title">
-                <h3>Prof. Dr. Kundu Yangzom</h3>
-            </div>
-            <div class="des">
-                <p>A professor of obstetrics and gynecology at Patan Academy of Health Sciences, Dr. Yangzom is experienced in managing high-risk pregnancies and complex gynecological conditions​.​</p>
-                    <button onclick="openModal('modalBhagwan')">View Profile</button>
-                    
-            </div>
-            <div class="butt">
-                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
-
+                <p>A distinguished pediatric neurologist specializing in treating children with neurological, developmental, and behavioral disorders.</p>
+                <button onclick="toggleProfile(event, 'profile3')">View Profile</button>
+                <div id="profile3" class="profile-popup">
+                    <div class="profile-info">
+                        <p><strong>Name:</strong> Dr. Kripa Sherchan</p>
+                        <p><strong>NMC Number:</strong> 6789</p>
+                        <p><strong>Experience:</strong> 18+ years</p>
+                        <p><strong>Available Hospitals:</strong></p>
+                        <ul>
+                            <li>SOWA Clinic, Jawalakhel</li>
+                            <li>Alka Hospital</li>
+                            <li>Nepal Medical College</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
     <script>
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('navLinks');
+        // Handle click anywhere on the document
+        document.addEventListener('click', function(event) {
+            const allPopups = document.querySelectorAll('.profile-popup');
+            allPopups.forEach(popup => {
+                if (popup.style.display === "block") {
+                    // Check if click was outside the popup and its button
+                    const button = popup.previousElementSibling;
+                    if (!popup.contains(event.target) && event.target !== button) {
+                        popup.style.display = "none";
+                    }
+                }
+            });
+        });
+
+        function toggleProfile(event, profileId) {
+            event.stopPropagation(); // Prevent the document click handler from immediately closing the popup
+            const popup = document.getElementById(profileId);
+            
+            // Close all other popups first
+            const allPopups = document.querySelectorAll('.profile-popup');
+            allPopups.forEach(p => {
+                if (p.id !== profileId) {
+                    p.style.display = "none";
+                }
+            });
+
+            // Toggle the clicked popup
+            if (popup.style.display === "block") {
+                popup.style.display = "none";
+            } else {
+                popup.style.display = "block";
+            }
+        }
+
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('ham');
+        const navLinks = document.getElementById('navLink');
 
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('show');

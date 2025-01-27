@@ -5,6 +5,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Appointment Booking</title>
+
+        <script src="https://khalti.com/static/khalti-checkout.js"></script>
         <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -130,7 +132,8 @@
             <!-- Patient Information -->
             <div class="form-group">
                 <label for="patient_name">Patient Name</label>
-                <input type="text" id="patient_name" required>
+                <input type="text" id="patient_name" pattern="[A-Za-z\s]+"
+                    title="Letters only" required>
             </div>
             <div class="form-group">
                 <label for="patient_age">Patient Age</label>
@@ -138,7 +141,9 @@
             </div>
             <div class="form-group">
                 <label for="contact_number">Contact Number</label>
-                <input type="text" id="contact_number" required>
+                <input type="text" id="contact_number" pattern="9[78]\d{8}"
+                    title="Must be a 10-digit number starting with 97 or 98"
+                    required>
             </div>
 
             <!-- Time Slot Selection -->
@@ -148,11 +153,16 @@
                 <div class="available-count" id="available-count">Available
                     Slots: 0</div>
             </div>
+            <button id="pay-khalti">Pay with Khalti</button>
 
             <button class="btn-submit">Book Appointment</button>
         </div>
 
         <script>
+        // Set date picker to disallow past dates
+        const dateInput = document.getElementById('date');
+        dateInput.setAttribute('min', new Date().toISOString().split('T')[0]);
+
         // Load Hospitals
         fetch('get_hospitals.php')
             .then(response => response.json())
@@ -179,23 +189,22 @@
                 });
         });
 
-
+        // Load Doctors on Department Change
         document.getElementById('department').addEventListener('change', function () {
-    const departmentId = this.value;
-    const hospitalId = document.getElementById('hospital').value;
+            const departmentId = this.value;
+            const hospitalId = document.getElementById('hospital').value;
 
-    fetch(`get_doctors.php?hospitalId=${hospitalId}&departmentId=${departmentId}`)
-        .then(response => response.json())
-        .then(doctors => {
-            const doctorSelect = document.getElementById('doctor');
-            doctorSelect.disabled = false;
-            doctorSelect.innerHTML = "<option value=''>-- Select Doctor --</option>";
-            doctors.forEach(doctor => {
-                doctorSelect.innerHTML += `<option value="${doctor.Doc_id}">${doctor.Doc_name}</option>`;
-            });
+            fetch(`get_doctors.php?hospitalId=${hospitalId}&departmentId=${departmentId}`)
+                .then(response => response.json())
+                .then(doctors => {
+                    const doctorSelect = document.getElementById('doctor');
+                    doctorSelect.disabled = false;
+                    doctorSelect.innerHTML = "<option value=''>-- Select Doctor --</option>";
+                    doctors.forEach(doctor => {
+                        doctorSelect.innerHTML += `<option value="${doctor.Doc_id}">${doctor.Doc_name}</option>`;
+                    });
+                });
         });
-});
-
 
         // Load Time Slots on Doctor Selection
         document.getElementById('doctor').addEventListener('change', function () {
@@ -220,7 +229,7 @@
             }
         });
 
-        // Highlight selected slot and submit form
+        // Highlight selected slot
         document.getElementById('slots').addEventListener('click', function (e) {
             if (e.target.classList.contains('slot') && !e.target.classList.contains('taken')) {
                 document.querySelectorAll('.slot').forEach(slot => slot.classList.remove('selected'));
@@ -228,16 +237,30 @@
             }
         });
 
+        // Submit form
         document.querySelector('.btn-submit').addEventListener('click', function () {
-            const patientName = document.getElementById('patient_name').value;
-            const patientAge = document.getElementById('patient_age').value;
-            const contactNumber = document.getElementById('contact_number').value;
+            const patientName = document.getElementById('patient_name').value.trim();
+            const patientAge = document.getElementById('patient_age').value.trim();
+            const contactNumber = document.getElementById('contact_number').value.trim();
             const appointmentDate = document.getElementById('date').value;
             const hospitalId = document.getElementById('hospital').value;
             const departmentId = document.getElementById('department').value;
             const doctorId = document.getElementById('doctor').value;
             const selectedSlot = document.querySelector('.slot.selected');
 
+            // Validate form inputs
+            if (!/^[A-Za-z\s]+$/.test(patientName)) {
+                alert('Patient name should contain letters only.');
+                return;
+            }
+            if (!/^9[78]\d{8}$/.test(contactNumber)) {
+                alert('Contact number should be a 10-digit number starting with 97 or 98.');
+                return;
+            }
+            if (isNaN(patientAge) || patientAge < 0) {
+                alert('Age should be a non-negative number.');
+                return;
+            }
             if (!selectedSlot) {
                 alert('Please select a time slot.');
                 return;
@@ -266,6 +289,47 @@
                     alert('An error occurred while booking the appointment.');
                 });
         });
+        document.getElementById('pay-khalti').addEventListener('click', function () {
+        var config = {
+            publicKey: 'test_public_key_1234567890abcdef',  // Test public key
+            productIdentity: '1234567890',
+            productName: 'Demo Payment',
+            productUrl: 'http://your-demo-site.com',
+            eventHandler: {
+                onSuccess(payload) {
+                    alert('Payment Successful! Processing...');
+
+                    // Send token and amount to backend for verification
+                    fetch('verify_payment.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            token: payload.token,
+                            amount: payload.amount
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert(data.message);
+                        } else {
+                            alert('Payment verification failed.');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+                },
+                onError(error) {
+                    console.log('Payment failed', error);
+                },
+                onClose() {
+                    console.log('Payment widget closed');
+                }
+            }
+        };
+
+        var checkout = new KhaltiCheckout(config);
+        checkout.show({ amount: 1000 });  // Amount in paisa (1000 = NPR 10)
+    });
     </script>
     </body>
 

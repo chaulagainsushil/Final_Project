@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Update Doctor</title>
-        <style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Hospital Department Doctor</title>
+    <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
@@ -106,54 +106,63 @@
             }
         }
     </style>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
         $(document).ready(function() {
-            $("#doctorForm").submit(function(event) {
+            $("#hospitalDeptDoctorForm").submit(function(event) {
                 event.preventDefault();
-                var docName = $("#doc_name").val();
+                var hospitalId = $("#hospital_id").val();
+                var departmentId = $("#department_id").val();
+                var doctorId = $("#doctor_id").val();
 
                 $.ajax({
-                    url: 'Add_doctor.php',
+                    url: 'mapingtable.php',
                     type: 'POST',
-                    data: { doc_name: docName },
+                    data: { hospital_id: hospitalId, department_id: departmentId, doctor_id: doctorId },
                     success: function(response) {
-                        $("#doctorTable").html(response);
-                        $("#doc_name").val("");
+                        $("#hospitalDeptDoctorTable").html(response);
+                        $("#hospital_id, #department_id, #doctor_id").val("");
                     }
                 });
             });
 
-            function loadDoctors() {
+            function loadHospitalDeptDoctor() {
                 $.ajax({
-                    url: 'Add_doctor.php',
+                    url: 'mapingtable.php',
                     type: 'GET',
                     success: function(response) {
-                        $("#doctorTable").html(response);
+                        $("#hospitalDeptDoctorTable").html(response);
                     }
                 });
             }
 
-            loadDoctors();
+            loadHospitalDeptDoctor();
         });
     </script>
-    </head>
-    <body>
-        <div class="form-container">
-            <h2>Update Doctor</h2>
-            <form id="doctorForm">
-                <div class="form-group">
-                    <label for="doc_name">Doctor Name:</label>
-                    <input type="text" id="doc_name" name="doc_name"
-                        placeholder="Enter New Doctor Name" required>
-                </div>
-                <button type="submit">Update</button>
-            </form>
-        </div>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add Hospital-Department-Doctor</h2>
+        <form id="hospitalDeptDoctorForm">
+            <div class="form-group">
+                <label for="hospital_id">Hospital ID:</label>
+                <input type="text" id="hospital_id" name="hospital_id" placeholder="Enter Hospital ID" required>
+            </div>
+            <div class="form-group">
+                <label for="department_id">Department ID:</label>
+                <input type="text" id="department_id" name="department_id" placeholder="Enter Department ID" required>
+            </div>
+            <div class="form-group">
+                <label for="doctor_id">Doctor ID:</label>
+                <input type="text" id="doctor_id" name="doctor_id" placeholder="Enter Doctor ID" required>
+            </div>
+            <button type="submit">Add</button>
+        </form>
+    </div>
 
-        <div class="table-container">
-            <h2>Doctors List</h2>
-            <div id="doctorTable"></div>
-        </div>
-    </body>
+    <div class="table-container">
+        <h2>Hospital-Department-Doctor List</h2>
+        <div id="hospitalDeptDoctorTable"></div>
+    </div>
+</body>
 </html>

@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $newDate = $_POST['new_date'];
     $newTime = $_POST['new_time'];
 
-    // Update appointment with new date and time
+
     $sql = "UPDATE appointments SET appointment_date = ?, appointment_time = ?, Appointment_Status = 'Rescheduled' WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssi", $newDate, $newTime, $appointmentId);

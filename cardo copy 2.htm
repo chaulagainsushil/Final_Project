@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctors</title>
+    <link rel="stylesheet" href="cardo.css">
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 500px;
+            position: relative;
+            text-align: center;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 20px;
+            cursor: pointer;
+            color: #ff0000;
+        }
+
+        .modal h3 {
+            color: #007bff;
+        }
+
+        .modal p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Med-Appoint</div>
+    </nav>
+
+    <div class="cards-container">
+        <div class="cards">
+            <div class="image">
+                <img src="https://english.onlinekhabar.com/wp-content/uploads/2022/10/Dr-Bhagwan-Koirala-smiling.jpg">
+            </div>
+            <div class="title">
+                <h3>Dr. Bhagwan Koirala</h3>
+            </div>
+            <div class="des">
+                <p>Respected cardiothoracic surgeon with extensive experience.</p>
+                <button onclick="openModal('Dr. Bhagwan Koirala', 'NMC123456', '30 Years', 'Gangalal Hospital', 'MBBS, MD, FRCS')">View Profile</button>
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="image">
+                <img src="https://world-heart-federation.org/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/download-19.jpg.webp">
+            </div>
+            <div class="title">
+                <h3>Dr. Prakash Raj Regmi</h3>
+            </div>
+            <div class="des">
+                <p>Experienced cardiologist at Lalitpur Heart Clinic.</p>
+                <button onclick="openModal('Dr. Prakash Raj Regmi', 'NMC654321', '25 Years', 'Lalitpur Heart Clinic', 'MBBS, MD')">View Profile</button>
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="image">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUeZ3P9-OoGXtv1qK2HR61RKU5_aZvYO9sIQ&s">
+            </div>
+            <div class="title">
+                <h3>Dr. Ranjit Kumar Sharma</h3>
+            </div>
+            <div class="des">
+                <p>Principal Consultant at Nepal Mediciti.</p>
+                <button onclick="openModal('Dr. Ranjit Kumar Sharma', 'NMC987654', '20 Years', 'Nepal Mediciti', 'MBBS, MD, DM')">View Profile</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="doctorModal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 id="doctorName"></h3>
+            <p><strong>NMC Number:</strong> <span id="nmcNumber"></span></p>
+            <p><strong>Experience:</strong> <span id="experience"></span></p>
+            <p><strong>Available Hospitals:</strong> <span id="hospitals"></span></p>
+            <p><strong>Degree:</strong> <span id="degree"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function openModal(name, nmc, experience, hospitals, degree) {
+            document.getElementById('doctorName').textContent = name;
+            document.getElementById('nmcNumber').textContent = nmc;
+            document.getElementById('experience').textContent = experience;
+            document.getElementById('hospitals').textContent = hospitals;
+            document.getElementById('degree').textContent = degree;
+            document.getElementById('doctorModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('doctorModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

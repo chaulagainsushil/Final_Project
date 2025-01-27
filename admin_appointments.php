@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-// Check if admin is logged in
+
 
 
 $servername = "localhost";
 $username = "root";
-$password = "root";  // Database password set to root
+$password = "root";
 $dbname = "med_appoint";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -15,7 +15,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch all appointments
+
 $sql = "SELECT a.id, a.patient_name, a.patient_age, a.contact_number, a.appointment_date, a.appointment_time, a.Appointment_Status, 
                h.Hospital_name, d.Name AS department_name, doc.Doc_name 
         FROM appointments a
@@ -203,7 +203,7 @@ $conn->close();
         <?php endif; ?>
     </div>
 
-    <!-- Modal for Editing Appointment -->
+
     <div class="modal" id="edit-modal">
         <div class="modal-content">
             <span class="close-btn" id="close-modal">&times;</span>

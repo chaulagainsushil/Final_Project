@@ -10,23 +10,10 @@
     <nav class="navbar">
         <div class="logo">Med-Appoint</div>
         <ul class="nav-linkss" id="Linkss">
-            <li><a href="dummy.htm">Home</a></li>
+            <li><a href="Index.html">Home</a></li>
             <li><a href="aboutus.htm">About Us</a></li>
-            <li>
-                <a href="FindDoctors.htm">Find Doctors</a>
-                <ul class="dropdown-menu">
-                    <li><a href="cardo.htm">Dept . of Cardioogy</a></li>
-                    <li><a href="neuro.htm">Dept. of Neurology</a></li>
-                    <li><a href="Gynecologist.htm">Dept . of Gynecology</a></li>
-                    <li><a href="orthopedics.htm">Dept . of Orthopedics</a></li>
-                    <li><a href="pedia.htm">Dept . of Pediatrics</a></li>
-                    <li><a href="oncology.htm">Dept . of Oncology</a></li>
-                    <li><a href="ENT.htm">Dept . of ENT</a></li>
-                    <li><a href="urology.htm">Dept . of Urology</a></li>
-                    <li><a href="opthalmology.htm">Dept . Opthalmology</a></li>               
-                 </ul>
-              </li>
-              <li><a href="blog.htm">Blog</a></li>
+            <li><a href="FindDoctors.htm">Find Doctors</a></li>
+            <li><a href="blog.htm">Blog</a></li>
             <li><a href="contactus.htm">Contact Us</a></li>
         </ul>
         <div class="log-buttons">
@@ -43,21 +30,21 @@
     <div class="container">
         <div class="form">
             <div class="contact-info">
-                <H2 class="TITLE">Let's get in touch</H2>
+                <h2 class="TITLE">Let's get in touch</h2>
                 <p class="text">
-                    Get in touch with Med-Appoint for any inquiries, feedback, or assistance. We're here to help yoou with your healthcare needs, ensuring a seamless appointment booking experience. At Med Appoint, we're here to assist you in managing your healthcare needs. Whether you have questions about booking appointments, need help finding the right doctor, or have feedback on our services, our team is ready to support you. Fill out the form, and we'll get back to you as soon as possible.
+                    Get in touch with Med-Appoint for any inquiries, feedback, or assistance. We're here to help you with your healthcare needs.
                 </p>
                 <div class="info">
                     <div class="information">
-                        <img src="phone.png" class="icon" alt="">
+                        <img src="phone.png" class="icon" alt="Phone Icon">
                         <p>023-540889</p>
                     </div>
                     <div class="information">
-                        <img src="email.png" class="icon" alt="">
+                        <img src="email.png" class="icon" alt="Email Icon">
                         <p>Appoint-Med@gmail.com</p>
                     </div>
                     <div class="information">
-                        <img src="location.png" class="icon" alt="">
+                        <img src="location.png" class="icon" alt="Location Icon">
                         <p>Balkumari, Lalitpur</p>
                     </div>
                 </div>
@@ -66,7 +53,7 @@
                 <span class="circle one"></span>
                 <span class="circle two"></span>
 
-                <form action="#" method="POST" on>
+                <form id="contactForm">
                     <h3 class="title">Contact Us</h3>
                     <div class="input-container">
                         <input type="text" name="name" class="input" required>
@@ -89,25 +76,32 @@
                     </div>
                     <input type="submit" value="Send" class="btn">
                 </form>
+                <div id="responseMessage" class="response-message"></div>
             </div>
         </div>
     </div>
 
-    <script src="contact.js"></script>
     <script>
-       const hamburger = document.getElementById('burger1');
-const navLinks = document.getElementById('Linkss');
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent traditional form submission
+            
+            let formData = new FormData(this);
 
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('show');
-     function scrollToUsername() {
-            document.getElementById('username').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-});
-
+            fetch('contact_process.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('responseMessage').innerHTML = 
+                    `<p style="color: green; font-weight: bold;">${data}</p>`;
+                document.getElementById('contactForm').reset();
+            })
+            .catch(error => {
+                document.getElementById('responseMessage').innerHTML = 
+                    `<p style="color: red; font-weight: bold;">Error submitting form. Please try again.</p>`;
+            });
+        });
     </script>
-    <script src="contvalidation.js"></script>
-    
-   
 </body>
 </html>

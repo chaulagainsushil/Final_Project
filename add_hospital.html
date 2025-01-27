@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Insert Hospital Data</title>
-        <style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management</title>
+    <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color: #f8f9fa;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             min-height: 100vh;
         }
 
-        .form-container {
+        .form-container, .table-container {
             background: #fff;
             padding: 20px 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 400px;
+            max-width: 600px;
+            margin-bottom: 20px;
         }
 
-        .form-container h2 {
-            margin-bottom: 20px;
-            color: #333;
+        h2 {
             text-align: center;
+            color: #333;
+            margin-bottom: 20px;
         }
 
         .form-group {
@@ -37,36 +39,33 @@
 
         label {
             display: block;
-            margin-bottom: 5px;
             font-weight: bold;
+            margin-bottom: 5px;
             color: #555;
         }
 
-        input[type="text"],
-        input[type="number"] {
+        input[type="text"] {
             width: 100%;
             padding: 10px;
+            font-size: 16px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            font-size: 16px;
+            outline: none;
         }
 
-        input[type="text"]:focus,
-        input[type="number"]:focus {
+        input:focus {
             border-color: #007bff;
-            outline: none;
             box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
         }
 
         button {
-            display: block;
             width: 100%;
-            padding: 10px;
+            padding: 12px;
+            font-size: 18px;
             background-color: #007bff;
             color: #fff;
             border: none;
             border-radius: 5px;
-            font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
@@ -75,40 +74,91 @@
             background-color: #0056b3;
         }
 
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
         @media (max-width: 480px) {
-            .form-container {
+            .form-container, .table-container {
                 padding: 15px 20px;
             }
 
-            input[type="text"],
-            input[type="number"],
-            button {
+            button, input {
                 font-size: 14px;
             }
         }
     </style>
-    </head>
-    <body>
-        <div class="form-container">
-            <h2>Insert Hospital Details</h2>
-            <form action="add_hospitak.php" method="post">
-                <div class="form-group">
-                    <label for="hospital_id">Hospital ID:</label>
-                    <input type="number" id="hospital_id" name="hospital_id"
-                        placeholder="Enter hospital ID (if required)">
-                </div>
-                <div class="form-group">
-                    <label for="hospital_name">Hospital Name:</label>
-                    <input type="text" id="hospital_name" name="hospital_name"
-                        placeholder="Enter hospital name" required>
-                </div>
-                <div class="form-group">
-                    <label for="address">Address:</label>
-                    <input type="text" id="address" name="address"
-                        placeholder="Enter address" required>
-                </div>
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    </body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#hospitalForm").submit(function(event) {
+                event.preventDefault();
+                var hospitalName = $("#hospital_name").val();
+                var address = $("#address").val();
+                
+                $.ajax({
+                    url: 'add_hospital.php',
+                    type: 'POST',
+                    data: { hospital_name: hospitalName, address: address },
+                    success: function(response) {
+                        $("#hospitalTable").html(response);
+                        $("#hospital_name").val("");
+                        $("#address").val("");
+                    }
+                });
+            });
+
+            function loadHospitals() {
+                $.ajax({
+                    url: 'add_hospital.php',
+                    type: 'GET',
+                    success: function(response) {
+                        $("#hospitalTable").html(response);
+                    }
+                });
+            }
+
+            loadHospitals();
+        });
+    </script>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add Hospital</h2>
+        <form id="hospitalForm">
+            <div class="form-group">
+                <label for="hospital_name">Hospital Name:</label>
+                <input type="text" id="hospital_name" name="hospital_name" placeholder="Enter Hospital Name" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" placeholder="Enter Address" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="table-container">
+        <h2>Hospital List</h2>
+        <div id="hospitalTable"></div>
+    </div>
+</body>
 </html>

@@ -197,9 +197,9 @@ $conn->close();
                 <span>Status: <?php echo htmlspecialchars($appointment['Appointment_Status']); ?></span>
             </div>
             <div>
-                <button class="btn btn-reschedule" data-id="<?php echo $appointment['id']; ?>"
+                <!-- <button class="btn btn-reschedule" data-id="<?php echo $appointment['id']; ?>"
                     data-date="<?php echo $appointment['appointment_date']; ?>"
-                    data-time="<?php echo $appointment['appointment_time']; ?>">Reschedule</button>
+                    data-time="<?php echo $appointment['appointment_time']; ?>">Reschedule</button> -->
                 <button class="btn btn-delete" data-id="<?php echo $appointment['id']; ?>">Delete</button>
             </div>
         </div>
@@ -208,7 +208,7 @@ $conn->close();
     </div>
 
     <!-- Modal for Rescheduling -->
-    <div class="modal" id="reschedule-modal">
+    <!-- <div class="modal" id="reschedule-modal">
         <div class="modal-content">
             <span class="close-btn" id="close-modal">&times;</span>
             <h3>Reschedule Appointment</h3>
@@ -238,10 +238,10 @@ $conn->close();
                         <option value="15:30">15:30</option>
                     </select>
                 </div>
-                <button type="submit" class="btn-save">Save Changes</button>
-            </form>
-        </div>
+                <!-- <button type="submit" class="btn-save">Save Changes</button> -->
+    </form>
     </div>
+    </div> -->
 
     <script>
     let appointmentToDelete = null;
@@ -252,39 +252,39 @@ $conn->close();
     const closeModal = document.getElementById('close-modal');
     const form = document.getElementById('reschedule-form');
 
-    rescheduleButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            document.getElementById('appointment-id').value = button.getAttribute('data-id');
-            document.getElementById('new-date').value = button.getAttribute('data-date');
-            modal.style.display = 'flex';
-        });
-    });
+    // rescheduleButtons.forEach(button => {
+    //     button.addEventListener('click', () => {
+    //         document.getElementById('appointment-id').value = button.getAttribute('data-id');
+    //         document.getElementById('new-date').value = button.getAttribute('data-date');
+    //         modal.style.display = 'flex';
+    //     });
+    // });
 
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
+    // closeModal.addEventListener('click', () => {
+    //     modal.style.display = 'none';
+    // });
 
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const appointmentId = document.getElementById('appointment-id').value;
-        const newDate = document.getElementById('new-date').value;
-        const newTime = document.getElementById('new-time').value;
+    // form.addEventListener('submit', function(e) {
+    //     e.preventDefault();
+    //     const appointmentId = document.getElementById('appointment-id').value;
+    //     const newDate = document.getElementById('new-date').value;
+    //     const newTime = document.getElementById('new-time').value;
 
-        fetch('reschedule_appointment.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `id=${appointmentId}&new_date=${newDate}&new_time=${newTime}`,
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message);
-                if (data.status === 'success') {
-                    location.reload(); // Reload on success
-                }
-            });
-    });
+    //     fetch('reschedule_appointment.php', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/x-www-form-urlencoded',
+    //             },
+    //             body: `id=${appointmentId}&new_date=${newDate}&new_time=${newTime}`,
+    //         })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             alert(data.message);
+    //             if (data.status === 'success') {
+    //                 location.reload(); // Reload on success
+    //             }
+    //         });
+    // });
 
     // Delete appointment
     const deleteButtons = document.querySelectorAll('.btn-delete');

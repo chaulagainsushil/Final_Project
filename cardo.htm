@@ -5,33 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doctors</title>
     <link rel="stylesheet" href="cardo.css">
+    <style>
+        /* Add these new styles for the popup */
+        .profile-popup {
+            display: none;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 15px;
+        }
+        
+        .profile-info {
+            margin-top: 10px;
+        }
+        
+        .profile-info p {
+            margin: 8px 0;
+        }
+        
+        .profile-info ul {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">Med-Appoint</div>
         <ul class="nav-link" id="navLink">
-            <li><a href="DUMMY.HTM">Home</a></li>
+            <li><a href="Index.html">Home</a></li>
             <li><a href="aboutus.htm">About Us</a></li>
             <li>
                 <a href="FindDoctors.htm">Find Doctors</a>
-                <ul class="dropdown-menu">
-                    <li><a href="cardo.htm">Dept . of Cardioogy</a></li>
-                  <li><a href="neuro.htm">Dept. of Neurology</a></li>
-                  <li><a href="Gynecologist.htm">Dept . of Gynecology</a></li>
-                  <li><a href="orthopedics.htm">Dept . of Orthopedics</a></li>
-                  <li><a href="pedia.htm">Dept . of Pediatrics</a></li>
-                  <li><a href="oncology.htm">Dept . of Oncology</a></li>
-                  <li><a href="ENT.htm">Dept . of ENT</a></li>
-                  <li><a href="urology.htm">Dept . of Urology</a></li>
-                  <li><a href="opthalmology.htm">Dept . Opthalmology</a></li>
-                </ul>
-              </li>
-              <li><a href="blog.htm">Blog</a></li>
+            </li>
+            <li><a href="blog.htm">Blog</a></li>
             <li><a href="contactus.htm">Contact Us</a></li>
-            </ul>
-                <div class="log-buttons">
-            <a href="#login.htm" class="btn">Login</a>
-            <a href="#signup" class="btn">Signup</a>
+        </ul>
+        <div class="log-buttons">
         </div>
         <div class="ham" id="ham">
             <span></span>
@@ -48,16 +59,24 @@
                 <h3>Dr. Bhagwan Koirala</h3>
             </div>
             <div class="des">
-                <p> One of Nepal's most respected cardiothoracic surgeons, known for his work at Gangalal National Heart Centre and Shahid Gangalal National Heart Centre in Kathmandu​</p>
-                    <button onclick="openModal('modalBhagwan')">View Profile</button>
-                    
+                <p>One of Nepal's most respected cardiothoracic surgeons, known for his work at Gangalal National Heart Centre and Shahid Gangalal National Heart Centre in Kathmandu</p>
+                <button onclick="toggleProfile(event, 'profile1')">View Profile</button>
+                <div id="profile1" class="profile-popup">
+                    <div class="profile-info">
+                        <p><strong>Name:</strong> Dr. Bhagwan Koirala</p>
+                        <p><strong>NMC Number:</strong> 1234</p>
+                        <p><strong>Experience:</strong> 30+ years</p>
+                        <p><strong>Available Hospitals:</strong></p>
+                        <ul>
+                            <li>Gangalal National Heart Centre</li>
+                            <li>Shahid Gangalal National Heart Centre</li>
+                            <li>Manmohan Cardiothoracic Center</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="butt">
-                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
-
-            </div>
-            
         </div>
+
         <div class="cards">
             <div class="image">
                 <img src="https://world-heart-federation.org/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/download-19.jpg.webp">
@@ -66,15 +85,23 @@
                 <h3>Dr. Prakash Raj Regmi</h3>
             </div>
             <div class="des">
-                <p>A senior cardiologist with extensive experience, Dr. Regmi consults at Lalitpur Heart Clinic in Pulchok, where he has served since 1994. He is known for his expertise in invasive cardiac procedures</p>
-                    <button onclick="openModal('modalBhagwan')">View Profile</button>
-                    
-            </div>
-            <div class="butt">
-                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
-
+                <p>A senior cardiologist with extensive experience, Dr. Regmi consults at Lalitpur Heart Clinic in Pulchok, where he has served since 1994.</p>
+                <button onclick="toggleProfile(event, 'profile2')">View Profile</button>
+                <div id="profile2" class="profile-popup">
+                    <div class="profile-info">
+                        <p><strong>Name:</strong> Dr. Prakash Raj Regmi</p>
+                        <p><strong>NMC Number:</strong> 2345</p>
+                        <p><strong>Experience:</strong> 25+ years</p>
+                        <p><strong>Available Hospitals:</strong></p>
+                        <ul>
+                            <li>Lalitpur Heart Clinic</li>
+                            <li>Nepal Heart Foundation</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
+
         <div class="cards">
             <div class="image">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUeZ3P9-OoGXtv1qK2HR61RKU5_aZvYO9sIQ&s">
@@ -83,53 +110,58 @@
                 <h3>Dr. Ranjit Kumar Sharma</h3>
             </div>
             <div class="des">
-                <p>Dr. Ranjit Kumar Sharma is a Principal Consultant and Head of the Department of Interventional Cardiology at Nepal Mediciti. Dr. Sharma Graduated with MBBS in 1998 and MD in Cardiology in 2005</p>
-                    <button onclick="openModal('modalBhagwan')">View Profile</button>
-                    
-            </div>
-            <div class="butt">
-                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
-
-            </div>
-        </div>
-        <div class="cards">
-            <div class="image">
-                <img src="images/prabesh.png">
-            </div>
-            <div class="title">
-                <h3>Dr. Prabesh Neupane</h3>
-            </div>
-            <div class="des">
-                <p>Dr. Prabesh Neupane is a Consultant Interventional Cardiologist with extensive experience and expertise in adult cardiology and coronary interventions at Nepal Mediciti</p>
-                    <button onclick="openModal('modalBhagwan')">View Profile</button>
-                    
-            </div>
-            <div class="butt">
-                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
-
+                <p>Dr. Ranjit Kumar Sharma is a Principal Consultant and Head of the Department of Interventional Cardiology at Nepal Mediciti.</p>
+                <button onclick="toggleProfile(event, 'profile3')">View Profile</button>
+                <div id="profile3" class="profile-popup">
+                    <div class="profile-info">
+                        <p><strong>Name:</strong> Dr. Ranjit Kumar Sharma</p>
+                        <p><strong>NMC Number:</strong> 3456</p>
+                        <p><strong>Experience:</strong> 20+ years</p>
+                        <p><strong>Available Hospitals:</strong></p>
+                        <ul>
+                            <li>Nepal Mediciti</li>
+                            <li>Grande International Hospital</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="cards">
-            <div class="image">
-                <img src="images/milan.png">
-            </div>
-            <div class="title">
-                <h3>Dr. Milan Gautam</h3>
-            </div>
-            <div class="des">
-                <p>Dr. Milan Gautam is a Consultant in the Department of Interventional Cardiology at Nepal Mediciti. He completed his MBBS from Manipal College of Medical Sciences in Pokhara in 2009</p>
-                    <button onclick="openModal('modalBhagwan')">View Profile</button>
-                    
-            </div>
-            <div class="butt">
-                <a href="login.htm"><button class="jjj">Get Appointment</button></a>
+    </div>
 
-            </div>
-        </div>
-        
+    <script>
+        // Handle click anywhere on the document
+        document.addEventListener('click', function(event) {
+            const allPopups = document.querySelectorAll('.profile-popup');
+            allPopups.forEach(popup => {
+                if (popup.style.display === "block") {
+                    // Check if click was outside the popup and its button
+                    const button = popup.previousElementSibling;
+                    if (!popup.contains(event.target) && event.target !== button) {
+                        popup.style.display = "none";
+                    }
+                }
+            });
+        });
 
+        function toggleProfile(event, profileId) {
+            event.stopPropagation(); // Prevent the document click handler from immediately closing the popup
+            const popup = document.getElementById(profileId);
+            
+            // Close all other popups first
+            const allPopups = document.querySelectorAll('.profile-popup');
+            allPopups.forEach(p => {
+                if (p.id !== profileId) {
+                    p.style.display = "none";
+                }
+            });
 
-
-
-    </body>
+            // Toggle the clicked popup
+            if (popup.style.display === "block") {
+                popup.style.display = "none";
+            } else {
+                popup.style.display = "block";
+            }
+        }
+    </script>
+</body>
 </html>
